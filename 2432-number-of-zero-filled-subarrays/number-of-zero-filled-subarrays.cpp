@@ -15,13 +15,11 @@ public:
             end+=front*(front+1)/2;
             front=0;
         }
-        if(front!=0&&i==n-1)
-
-        {
-           end+=front*(front+1)/2; 
-        }
-
        }
+           end+=front*(front+1)/2; 
+        
+
+       
        return end;
        
 

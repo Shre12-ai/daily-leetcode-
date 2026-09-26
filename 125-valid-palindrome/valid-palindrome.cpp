@@ -1,18 +1,28 @@
 class Solution {
 public:
     bool isPalindrome(string s) {
-        string newst;
-       for(auto i:s)
-       {
-         if(isalnum(i))
-         {
-          newst+=tolower(i);
-         }
-       }
-       string reversed=newst;
-       reverse(reversed.begin(),reversed.end());
-       return reversed==newst;
-        
-        
+        int left=0;
+        int right=s.size()-1;
+   while(left<right)
+  {
+      if(!isalnum(s[left]))
+      {
+        left++;
+        continue;
+      }
+      if(!isalnum(s[right]))
+      {
+        right--;
+        continue;
+      }
+      if(tolower(s[left])!=tolower(s[right]))
+      {
+        return false;
+      }
+      left++;
+      right--;
+      
+  }
+  return true;
     }
 };

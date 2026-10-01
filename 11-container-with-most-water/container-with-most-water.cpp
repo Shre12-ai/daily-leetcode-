@@ -9,7 +9,8 @@ public:
        {
         int width=right-left;
         int h=min(height[left],height[right]);
-        m=max(m,h*width);
+        int area=h*width;
+        m=max(m,area);
         if(height[left]>height[right])
             right--;
         else

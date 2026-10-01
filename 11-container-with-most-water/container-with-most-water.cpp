@@ -11,13 +11,9 @@ public:
         int h=min(height[left],height[right]);
         m=max(m,h*width);
         if(height[left]>height[right])
-        {
             right--;
-        }
         else
-        {
             left++;
-        }
        }
        return m;
     }

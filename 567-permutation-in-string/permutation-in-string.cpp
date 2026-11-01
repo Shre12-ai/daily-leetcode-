@@ -1,26 +1,24 @@
 class Solution {
 public:
     bool checkInclusion(string s1, string s2) {
-        int s1size=s1.size(); int s2size=s2.size();
-         if(s1size>s2size) return false;
-         vector<int> s1count(26,0); vector<int> s2count(26,0);
-         for(int i=0;i<s1size;i++)
-         {
-           s1count[s1[i]-'a']++;
-           s2count[s2[i]-'a']++;
-         }
-         if(s1count==s2count) return true;
-         for(int i=s1size;i<s2size;i++)
-         {
-            s2count[s2[i]-'a']++;
-            s2count[s2[i-s1size]-'a']--;
-         
-         if(s1count==s2count)
-         {
-            return true;
-         }
-         }
-         return false;
+        int lenS1=s1.size();
+        int lenS2=s2.size();
+        vector<int> window(26,0);
+        vector<int> freqS1(26,0);
+        if(lenS1>lenS2) return false;
+        for(int i=0;i<lenS1; i++){
+          window[s2[i]-'a']++;
+          freqS1[s1[i]-'a']++;
+        }
+        if(window==freqS1) return true;
+        for(int i=lenS1;i<lenS2;i++){
+            window[s2[i]-'a']++;
+            window[s2[i-lenS1]-'a']--;
+            if(window==freqS1){
+                return true;
+            }
+        }
+        return false;
+
     }
-    
 };

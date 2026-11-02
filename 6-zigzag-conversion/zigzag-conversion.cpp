@@ -1,24 +1,20 @@
 class Solution {
 public:
     string convert(string s, int numRows) {
-        if (numRows == 1 || numRows >= s.size()) return s;
-        string ans;
         int n=s.size();
-        int currinsertion=2*(numRows-1);
-        for(int i=0;i<numRows;i++){
-        int index=i;
-        while(index<n){
-            ans+=s[index];
-            if(i!=0 && i!=numRows-1){
-                int insertion=currinsertion-(2*i);
-                int secondindex=index+insertion;
-                if(secondindex<n){
-                    ans+=s[secondindex];
-                }
-            }
-            index+=currinsertion;
+        if(n<=numRows||numRows==1) return s;
+        int direction=-1 ; int currentrow=0;
+        vector<string> rows(numRows);
+        for(char c:s){
+            rows[currentrow]+=c;
+            if(currentrow==0||currentrow==numRows-1)
+                   direction*=-1;
+            currentrow+=direction;
         }
+        string result;
+        for(string row:rows){
+            result+=row;
         }
-        return ans;
+        return result;
     }
 };
